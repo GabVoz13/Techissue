@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sustainable Technology in a High-Energy World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        :root {
+            --bg: #020617;
+            --bg-alt: #050815;
+            --panel: #0b1020;
+            --panel-soft: #111827;
+            --fg: #f9fafb;
+            --muted: #9ca3af;
+            --accent: #fb923c;
+            --accent-soft: #f97316;
+            --accent-alt: #22c55e;
+            --border: #1f2937;
+            --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background:
+                    radial-gradient(circle at top left, #1e293b 0, #020617 40%),
+                    radial-gradient(circle at bottom right, #111827 0, #020617 55%);
+            color: var(--fg);
+            line-height: 1.7;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            padding: 0.5rem 1rem;
+            background-color: #000;
+            color: #fff;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            left: 0.75rem;
+            top: 0.75rem;
+        }
+
+        .site-header {
+            position: relative;
+            top: 0;
+            z-index: 20;
+            background-image: linear-gradient(
+                    120deg,
+                    rgba(6, 78, 59, 0.95),
+                    rgba(248, 113, 113, 0.9),
+                    rgba(249, 115, 22, 0.9)
+            );
+            background-size: 200% 200%;
+            animation: headerGlow 22s ease infinite;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.6);
+            box-shadow: 0 14px 40px rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+        }
+
+        @keyframes headerGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .site-header .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .title-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem 1rem;
+            align-items: baseline;
+        }
+
+        .site-header h1 {
+            margin: 0.7rem 0 0.1rem;
+            font-size: 2.1rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .guide-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(249, 250, 251, 0.8);
+            border: 1px solid rgba(248, 250, 252, 0.4);
+            border-radius: 999px;
+            padding: 0.25rem 0.8rem;
+            background-color: rgba(15, 23, 42, 0.2);
+        }
+
+        .tagline {
+            margin: 0 0 0.5rem;
+            color: rgba(241, 245, 249, 0.9);
+            max-width: 40rem;
+            font-size: 0.98rem;
+        }
+
+        /* Nav pills */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .nav-button {
+            background: rgba(15, 23, 42, 0.2);
+            border-radius: 999px;
+            border: 1px solid rgba(15, 23, 42, 0.5);
+            padding: 0.35rem 0.85rem;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.9rem;
+            color: rgba(249, 250, 251, 0.9);
+            transition: background 0.15s ease, color 0.15s ease,
+            border-color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .nav-button:hover,
+        .nav-button:focus {
+            outline: 2px solid rgba(252, 211, 77, 0.9);
+            outline-offset: 2px;
+            background: rgba(15, 23, 42, 0.45);
+            border-color: rgba(248, 250, 252, 0.7);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(15, 23, 42, 0.45);
+        }
+
+        .nav-button--active {
+            background-image: linear-gradient(
+                    135deg,
+                    #fb923c,
+                    #facc15
+            );
+            color: #111827;
+            border-color: rgba(250, 204, 21, 0.9);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Hero block */
+        main {
+            padding-top: 1.75rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+            gap: 1.3rem;
+            background: radial-gradient(circle at top left, #0f172a 0, #020617 60%);
+            border-radius: 1rem;
+            border: 1px solid #1f2937;
+            padding: 1.6rem;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-main h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #fde68a;
+        }
+
+        .hero-main p {
+            margin: 0.4rem 0;
+            color: var(--muted);
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background-color: rgba(22, 163, 74, 0.16);
+            border: 1px solid rgba(34, 197, 94, 0.6);
+            color: #bbf7d0;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-tag span.dot {
+            display: inline-block;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 999px;
+            background: radial-gradient(circle, #22c55e 0, #065f46 60%);
+        }
+
+        .hero-side {
+            background: radial-gradient(circle at top, #0b1120 0, #020617 72%);
+            border-radius: 0.85rem;
+            border: 1px solid #1f2937;
+            padding: 0.9rem 1rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .hero-side h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #fee2e2;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .hero-list {
+            list-style: none;
+            margin: 0.3rem 0 0;
+            padding: 0;
+            font-size: 0.88rem;
+            color: #e5e7eb;
+        }
+
+        .hero-list li {
+            margin-bottom: 0.35rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        .hero-list li::before {
+            content: "•";
+            color: #f97316;
+            font-size: 1rem;
+            margin-top: 0.05rem;
+        }
+
+        /* Sections layout: two-column for the first pair */
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+            gap: 1.2rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .card {
+            background: linear-gradient(
+                    145deg,
+                    var(--bg-alt),
+                    var(--panel)
+            );
+            border-radius: 0.9rem;
+            border: 1px solid var(--border);
+            padding: 1.3rem 1.4rem 1.4rem;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            text-transform: none;
+        }
+
+        .card h2 span.badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            padding: 0.18rem 0.55rem;
+            border-radius: 999px;
+            border: 1px solid rgba(249, 115, 22, 0.9);
+            color: #fed7aa;
+            background-color: rgba(30, 64, 175, 0.35);
+        }
+
+        .card p {
+            margin: 0.4rem 0 0.7rem;
+            color: var(--muted);
+            font-size: 0.97rem;
+        }
+
+        .card p strong {
+            color: #e5e7eb;
+        }
+
+        .tension-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.4rem 0 0;
+            font-size: 0.94rem;
+            color: #e5e7eb;
+        }
+
+        .tension-list li {
+            margin-bottom: 0.3rem;
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .tension-list li span.key {
+            color: #fed7aa;
+            white-space: nowrap;
+        }
+
+        /* Read next grid */
+        .read-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .resource-card {
+            background: radial-gradient(circle at top, #111827 0, #020617 80%);
+            border-radius: 0.9rem;
+            border: 1px solid #1f2937;
+            padding: 0.95rem 1.1rem 1.1rem;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .resource-card h3 {
+            margin: 0 0 0.25rem;
+            font-size: 0.98rem;
+            color: #fef3c7;
+        }
+
+        .resource-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 0.3rem;
+        }
+
+        .resource-card p {
+            margin: 0.2rem 0 0;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            right: 1.25rem;
+            bottom: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(251, 191, 36, 0.9);
+            background-image: linear-gradient(135deg, #fb923c, #f59e0b);
+            color: #111827;
+            padding: 0.55rem 0.95rem;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 600;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.75);
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.85);
+        }
+
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid rgba(31, 41, 55, 0.9);
+            background-color: #020617;
+            margin-top: 2.1rem;
+        }
+
+        .site-footer .wrapper {
+            padding: 1.1rem 1.4rem 1.3rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .wrapper {
+                padding-inline: 1.1rem;
+            }
+
+            .section-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .site-header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+    <div class="wrapper">
+        <div class="title-row">
+            <div>
+                <div class="guide-label">Sustainable Tech Guide</div>
+                <h1>Sustainable Technology in a High-Energy World</h1>
+            </div>
+        </div>
+        <p class="tagline">
+            Not all “green” tech is created equal. This guide looks at streaming, AI, and digital policy
+            through a sustainability lens, drawing on research from my Zotero library.
+        </p>
+
+        <nav aria-label="Main">
+            <ul class="nav-list">
+                <li><button class="nav-button" data-section="intro">Overview</button></li>
+                <li><button class="nav-button" data-section="why-sustainable-tech">Why Sustainable Tech</button></li>
+                <li><button class="nav-button" data-section="streaming">Streaming</button></li>
+                <li><button class="nav-button" data-section="green-ai">Green AI</button></li>
+                <li><button class="nav-button" data-section="policy">Policy</button></li>
+                <li><button class="nav-button" data-section="read-next">Read Next</button></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main" class="wrapper">
+
+    <!-- HERO / OVERVIEW -->
+    <section id="intro" class="hero">
+        <div class="hero-main">
+            <div class="hero-tag">
+                <span class="dot"></span>
+                <span>Critical look at “green” tech</span>
+            </div>
+            <h2>What This Guide Is Doing</h2>
+            <p>
+                “Digital” does not mean immaterial. Behind every video stream, AI model, and
+                cloud service are data centres, networks, water, and hardware that eventually
+                becomes e-waste.
+            </p>
+            <p>
+                This guide is built from my curated Zotero library on sustainable technology.
+                It highlights how everyday habits connect to large infrastructures, and how
+                design choices and policy decisions shape what counts as “green.”
+            </p>
+        </div>
+        <aside class="hero-side" aria-label="Guide structure">
+            <h3>How to read this</h3>
+            <ul class="hero-list">
+                <li>Start with the big picture of why sustainable tech matters.</li>
+                <li>Look at streaming as a concrete everyday case.</li>
+                <li>Use Green AI and Policy to think about system-level change.</li>
+            </ul>
+        </aside>
+    </section>
+
+    <!-- FIRST ROW: WHY + STREAMING -->
+    <section class="section-grid">
+        <article id="why-sustainable-tech" class="card">
+            <h2>
+                Why sustainable technology matters
+                <span class="badge">Foundation</span>
+            </h2>
+            <p>
+                Even “virtual” actions rely on physical systems. Data centres
+                draw on regional power grids and large volumes of cooling water.
+                Networks span oceans and cities with fibre, towers, and routers.
+                Every phone, laptop, and console begins in a mine and ends as
+                part of a growing e-waste stream.
+            </p>
+            <p>
+                Sustainability research stresses that the environmental impact of
+                digital technologies spans the <strong>entire lifecycle</strong>:
+                from extraction and manufacturing to transport, usage, and disposal.
+                Focusing only on how efficient a device is while it’s turned on
+                hides the systems that make that efficiency possible.
+            </p>
+        </article>
+
+        <article id="streaming" class="card">
+            <h2>
+                Streaming & everyday media habits
+                <span class="badge">Case study</span>
+            </h2>
+            <p>
+                Streaming feels weightless, but every second depends on data
+                moving between storage, networks, and devices. Analyses of video
+                streaming, such as those by the Carbon Trust and related work in
+                my Zotero library, show that higher resolutions and longer watch
+                times increase energy use along the whole chain.
+            </p>
+            <p>
+                Some practical questions to ask:
+            </p>
+            <ul class="tension-list">
+                <li><span class="key">Resolution vs. impact:</span> Do I always need 4K, or
+                    is HD enough for most viewing?</li>
+                <li><span class="key">Streaming vs. download:</span> Would downloading once
+                    be less intensive than streaming the same thing repeatedly?</li>
+                <li><span class="key">Transparency vs. green branding:</span> Does a platform
+                    publish real environmental data, or just use vague eco language?</li>
+            </ul>
+        </article>
+    </section>
+
+    <!-- GREEN AI -->
+    <section id="green-ai" class="card">
+        <h2>
+            Green AI: potential and problems
+            <span class="badge">Systems in tension</span>
+        </h2>
+        <p>
+            Green AI is a term used for approaches that try to reduce the
+            energy and resource demands of machine learning systems while
+            keeping them useful. Studies in my Zotero collection track how
+            model size, training time, and hardware choices affect total
+            energy use and emissions.
+        </p>
+        <p>
+            Common strategies include:
+        </p>
+        <ul class="tension-list">
+            <li><span class="key">Efficiency techniques:</span> model pruning, quantization,
+                and distillation to make models smaller and faster.</li>
+            <li><span class="key">Hardware choices:</span> using GPUs/TPUs and data centre
+                infrastructure designed for high efficiency.</li>
+            <li><span class="key">Accounting:</span> actually measuring and reporting
+                the energy and carbon cost of training and deployment.</li>
+        </ul>
+        <p>
+            At the same time, very large, general-purpose models can still
+            require huge training runs and constant serving infrastructure.
+            Later revisions of this guide will use specific Zotero sources to
+            compare “smaller, task-specific” models with “bigger, general”
+            ones in terms of both usefulness and sustainability.
+        </p>
+    </section>
+
+    <!-- POLICY -->
+    <section id="policy" class="card">
+        <h2>
+            Policy, governance, and responsibility
+            <span class="badge">Beyond individual choices</span>
+        </h2>
+        <p>
+            It is easy to focus only on individual actions—lowering
+            resolutions, buying efficient devices, or unplugging hardware.
+            Those choices matter, but they are layered on top of policies and
+            infrastructures that ordinary users don’t directly control.
+        </p>
+        <p>
+            Policy and governance shape:
+        </p>
+        <ul class="tension-list">
+            <li><span class="key">Device lifetimes:</span> whether hardware is repairable
+                and how quickly it is pushed out of support.</li>
+            <li><span class="key">Reporting rules:</span> what companies have to disclose
+                about data centre emissions, water use, and supply chains.</li>
+            <li><span class="key">Public infrastructure:</span> investment in efficient
+                grids, cooling, and network backbones.</li>
+        </ul>
+        <p>
+            Future updates to this guide will connect specific policies and
+            regulatory frameworks from my Zotero readings to the technical
+            issues discussed in earlier sections, reinforcing that sustainable
+            technology is always a shared responsibility.
+        </p>
+    </section>
+
+    <!-- READ NEXT -->
+    <section id="read-next" class="card">
+        <h2>
+            Read next: starting points from my Zotero library
+            <span class="badge">Further reading</span>
+        </h2>
+        <div class="read-grid">
+            <article class="resource-card">
+                <div class="resource-tag">Streaming</div>
+                <h3>Carbon impact of video streaming (Carbon Trust)</h3>
+                <p>
+                    A breakdown of how streaming’s footprint is split across data
+                    centres, networks, and end-user devices, and what levers exist
+                    at each stage.
+                </p>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-tag">AI & energy</div>
+                <h3>AI’s Energy Demand (Penn State IEE)</h3>
+                <p>
+                    An accessible overview of why modern AI can be energy-intensive,
+                    along with proposed strategies for making models and data centres
+                    more efficient.
+                </p>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-tag">Digital use</div>
+                <h3>Environmental sustainability of digital content consumption</h3>
+                <p>
+                    Examines how everyday media habits interact with the physical
+                    infrastructures that support streaming and cloud services.
+                </p>
+            </article>
+        </div>
+    </section>
+
+</main>
+
+<button type="button" class="back-to-top" id="backToTop">↑ Top</button>
+
+<footer class="site-footer">
+    <div class="wrapper">
+        <p>&copy; 2025 Gabriella Vozar</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navButtons = document.querySelectorAll(".nav-button");
+        const sections = [
+            "intro",
+            "why-sustainable-tech",
+            "streaming",
+            "green-ai",
+            "policy",
+            "read-next"
+        ].map(id => document.getElementById(id));
+        const backToTop = document.getElementById("backToTop");
+
+        // Nav click → smooth scroll
+        navButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const id = btn.dataset.section;
+                const target = document.getElementById(id);
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+
+        // Scroll
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navButtons.forEach(btn => {
+                            if (btn.dataset.section === id) {
+                                btn.classList.add("nav-button--active");
+                            } else {
+                                btn.classList.remove("nav-button--active");
+                            }
+                        });
+                    }
+                });
+            },
+            { threshold: 0.45 }
+        );
+
+        sections.forEach(section => {
+            if (section) observer.observe(section);
+        });
+
+        // Back to top button
+        window.addEventListener("scroll", () => {
+            backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+        });
+
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    });
+</script>
+</body>
+</html>
