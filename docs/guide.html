@@ -17,8 +17,7 @@
             --accent-soft: #f97316;
             --accent-alt: #22c55e;
             --border: #1f2937;
-            --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-            sans-serif;
+            --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
 
         * {
@@ -43,6 +42,7 @@
             padding: 1.5rem;
         }
 
+        /* Skip link */
         .skip-link {
             position: absolute;
             left: -999px;
@@ -58,10 +58,8 @@
             top: 0.75rem;
         }
 
+        /* HEADER (non-sticky) */
         .site-header {
-            position: relative;
-            top: 0;
-            z-index: 20;
             background-image: linear-gradient(
                     120deg,
                     rgba(6, 78, 59, 0.95),
@@ -120,7 +118,7 @@
             font-size: 0.98rem;
         }
 
-        /* Nav pills */
+        /* Nav */
         .nav-list {
             list-style: none;
             padding: 0;
@@ -154,21 +152,17 @@
         }
 
         .nav-button--active {
-            background-image: linear-gradient(
-                    135deg,
-                    #fb923c,
-                    #facc15
-            );
+            background-image: linear-gradient(135deg, #fb923c, #facc15);
             color: #111827;
             border-color: rgba(250, 204, 21, 0.9);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
         }
 
-        /* Hero block */
         main {
             padding-top: 1.75rem;
         }
 
+        /* HERO */
         .hero {
             display: grid;
             grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
@@ -257,7 +251,7 @@
             margin-top: 0.05rem;
         }
 
-        /* Sections layout: two-column for the first pair */
+        /* SECTION GRID */
         .section-grid {
             display: grid;
             grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
@@ -266,11 +260,7 @@
         }
 
         .card {
-            background: linear-gradient(
-                    145deg,
-                    var(--bg-alt),
-                    var(--panel)
-            );
+            background: linear-gradient(145deg, var(--bg-alt), var(--panel));
             border-radius: 0.9rem;
             border: 1px solid var(--border);
             padding: 1.3rem 1.4rem 1.4rem;
@@ -286,7 +276,7 @@
             text-transform: none;
         }
 
-        .card h2 span.badge {
+        .badge {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.16em;
@@ -295,6 +285,7 @@
             border: 1px solid rgba(249, 115, 22, 0.9);
             color: #fed7aa;
             background-color: rgba(30, 64, 175, 0.35);
+            white-space: nowrap;
         }
 
         .card p {
@@ -310,27 +301,28 @@
         .tension-list {
             list-style: none;
             padding: 0;
-            margin: 0.4rem 0 0;
+            margin: 0.4rem 0 0.4rem;
             font-size: 0.94rem;
             color: #e5e7eb;
         }
 
         .tension-list li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.35rem;
             display: flex;
-            gap: 0.4rem;
+            gap: 0.35rem;
         }
 
-        .tension-list li span.key {
+        .tension-list .key {
             color: #fed7aa;
             white-space: nowrap;
         }
 
-        /* Read next grid */
+        /* READ NEXT GRID */
         .read-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1rem;
+            margin-top: 0.8rem;
         }
 
         .resource-card {
@@ -362,7 +354,7 @@
             color: #d1d5db;
         }
 
-        /* Back to top */
+        /* BACK TO TOP */
         .back-to-top {
             position: fixed;
             right: 1.25rem;
@@ -385,7 +377,7 @@
             box-shadow: 0 18px 42px rgba(0, 0, 0, 0.85);
         }
 
-        /* Footer */
+        /* FOOTER */
         .site-footer {
             border-top: 1px solid rgba(31, 41, 55, 0.9);
             background-color: #020617;
@@ -421,6 +413,49 @@
             .site-header h1 {
                 font-size: 1.7rem;
             }
+        }
+
+        .back-home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(251, 191, 36, 0.9);
+            background-image: linear-gradient(135deg, #f97316, #facc15);
+            color: #111827;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
+            transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+        }
+
+        .back-home-link:hover,
+        .back-home-link:focus {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.85);
+            outline: none;
+        }
+
+        .back-home-link span.icon {
+            font-size: 1rem;
+        }
+
+        .resource-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-radius: 0.9rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .resource-link:hover .resource-card,
+        .resource-link:focus .resource-card {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+            outline: none;
         }
     </style>
 </head>
@@ -463,18 +498,28 @@
                 <span class="dot"></span>
                 <span>Critical look at “green” tech</span>
             </div>
-            <h2>What This Guide Is Doing</h2>
+            <h2>Overview: The Physical Reality Behind Digital Life</h2>
             <p>
-                “Digital” does not mean immaterial. Behind every video stream, AI model, and
-                cloud service are data centres, networks, water, and hardware that eventually
-                becomes e-waste.
+                Digital technology feels instant and immaterial, a stream you open, an AI model generating text,
+                your files syncing across devices. But every digital action is rooted in a physical,
+                resource-dependent system. Data centers pull from regional power grids and consume enormous
+                amounts of water for cooling. Global fiber networks and cellular towers maintain our connectivity.
+                Devices begin as mined minerals and end as e-waste.
             </p>
             <p>
-                This guide is built from my curated Zotero library on sustainable technology.
-                It highlights how everyday habits connect to large infrastructures, and how
-                design choices and policy decisions shape what counts as “green.”
+                This guide brings together research from my Zotero library to explore the environmental cost of
+                digital technologies and highlight where sustainable design succeeds, and where it falls short.
+                The goal is not to frame digital life as inherently harmful, but to make the physical systems
+                behind it visible.
+            </p>
+            <p>
+                The sections that follow unpack why sustainable design must consider the entire lifecycle,
+                how streaming is a useful everyday example of invisible infrastructure, how “Green AI” seeks to
+                make machine learning more efficient and accountable, and how policy determines what
+                sustainability even means at scale.
             </p>
         </div>
+
         <aside class="hero-side" aria-label="Guide structure">
             <h3>How to read this</h3>
             <ul class="hero-list">
@@ -493,18 +538,33 @@
                 <span class="badge">Foundation</span>
             </h2>
             <p>
-                Even “virtual” actions rely on physical systems. Data centres
-                draw on regional power grids and large volumes of cooling water.
-                Networks span oceans and cities with fibre, towers, and routers.
-                Every phone, laptop, and console begins in a mine and ends as
-                part of a growing e-waste stream.
+                Digital tools feel lightweight, but they rely on vast global infrastructure. A single data center can
+                use as much electricity as a small town and millions of gallons of water per day for cooling. Network
+                hardware, fiber cables, marine cables, cell towers, routers, satellites, forms a physical backbone
+                that runs constantly, even while we sleep.
             </p>
             <p>
-                Sustainability research stresses that the environmental impact of
-                digital technologies spans the <strong>entire lifecycle</strong>:
-                from extraction and manufacturing to transport, usage, and disposal.
-                Focusing only on how efficient a device is while it’s turned on
-                hides the systems that make that efficiency possible.
+                Meanwhile, every device begins its life in a mine. Smartphones, laptops, and consoles require rare
+                earth elements and metals extracted through energy-intensive processes. Once manufactured, these
+                devices travel through global supply chains before ending up in our hands, and eventually as e-waste.
+            </p>
+            <p>
+                A key theme in sustainability research is that environmental impact spans the
+                <strong>entire lifecycle</strong> of a device:
+            </p>
+            <ul class="tension-list">
+                <li><span class="key">Extraction:</span> mining, minerals, and energy inputs.</li>
+                <li><span class="key">Manufacturing:</span> assembly, semiconductors, chemicals.</li>
+                <li><span class="key">Transport:</span> global shipping and logistics.</li>
+                <li><span class="key">Usage:</span> electricity and network demand.</li>
+                <li><span class="key">Disposal:</span> e-waste, recycling limits.</li>
+            </ul>
+            <p>
+                Most consumer-facing “green” marketing highlights only the usage phase (“this device uses X% less
+                power”). That hides the intense environmental cost of extraction, manufacturing, and disposal.
+                A laptop that uses less power while it's on does not erase the footprint of making it, nor the
+                short lifespans that force early replacement. Sustainable technology has to be evaluated across
+                this full lifecycle instead of just at the “on” switch.
             </p>
         </article>
 
@@ -514,23 +574,43 @@
                 <span class="badge">Case study</span>
             </h2>
             <p>
-                Streaming feels weightless, but every second depends on data
-                moving between storage, networks, and devices. Analyses of video
-                streaming, such as those by the Carbon Trust and related work in
-                my Zotero library, show that higher resolutions and longer watch
-                times increase energy use along the whole chain.
+                Streaming feels effortless, click, watch, done. But behind each stream is a chain of storage servers,
+                global delivery networks, and end-user devices all working in real time. The simplicity hides enormous
+                underlying infrastructure.
             </p>
             <p>
-                Some practical questions to ask:
+                Research in my Zotero library, including Carbon Trust and Istrate analyses, makes several things clear:
             </p>
             <ul class="tension-list">
-                <li><span class="key">Resolution vs. impact:</span> Do I always need 4K, or
-                    is HD enough for most viewing?</li>
-                <li><span class="key">Streaming vs. download:</span> Would downloading once
-                    be less intensive than streaming the same thing repeatedly?</li>
-                <li><span class="key">Transparency vs. green branding:</span> Does a platform
-                    publish real environmental data, or just use vague eco language?</li>
+                <li>
+                    <span class="key">Resolution matters:</span>
+                    4K streaming isn’t just a nicer picture, it's more data pushed through every layer of the system.
+                    More data = more energy at the data center, along the network, and on the device.
+                </li>
+                <li>
+                    <span class="key">Repeated streaming:</span>
+                    Watching a show repeatedly via stream forces the entire system to run each time.
+                    A download localizes that energy cost instead of repeating it.
+                </li>
+                <li>
+                    <span class="key">Transparency issues:</span>
+                    Some platforms publish real sustainability data. Others rely on vague eco-branding without
+                    meaningful reporting about emissions or water use.
+                </li>
             </ul>
+            <p>
+                Practical questions viewers can consider:
+            </p>
+            <ul class="tension-list">
+                <li><span class="key">Do I always need 4K?</span> HD often provides more than enough detail.</li>
+                <li><span class="key">Is autoplay increasing my total watch time?</span> Turning it off gives more control.</li>
+                <li><span class="key">Would downloading reduce repeated network demand?</span> often yes.</li>
+            </ul>
+            <p>
+                Streaming is a clear example of how invisible infrastructure supports digital life,
+                and how small changes in viewing habits can reduce system-wide demand without demanding perfection
+                from individual users.
+            </p>
         </article>
     </section>
 
@@ -541,29 +621,48 @@
             <span class="badge">Systems in tension</span>
         </h2>
         <p>
-            Green AI is a term used for approaches that try to reduce the
-            energy and resource demands of machine learning systems while
-            keeping them useful. Studies in my Zotero collection track how
-            model size, training time, and hardware choices affect total
-            energy use and emissions.
+            Artificial intelligence feels like the most “virtual” technology, but modern machine learning requires
+            massive computation. Training large models uses substantial electricity and cooling water, and deployed
+            models rely on continuous global server infrastructure. This makes AI a major sustainability concern in
+            computing today.
         </p>
         <p>
-            Common strategies include:
+            From my Zotero readings, three major themes define “Green AI”:
         </p>
         <ul class="tension-list">
-            <li><span class="key">Efficiency techniques:</span> model pruning, quantization,
-                and distillation to make models smaller and faster.</li>
-            <li><span class="key">Hardware choices:</span> using GPUs/TPUs and data centre
-                infrastructure designed for high efficiency.</li>
-            <li><span class="key">Accounting:</span> actually measuring and reporting
-                the energy and carbon cost of training and deployment.</li>
+            <li>
+                <span class="key">Efficiency-focused design:</span>
+                Techniques like pruning, quantization, and distillation reduce model size while maintaining
+                accuracy. Smaller models train faster and require less hardware across their entire lifecycle.
+            </li>
+            <li>
+                <span class="key">Hardware and data center efficiency:</span>
+                Energy cost depends heavily on chip design (GPU vs TPU), cooling systems, grid efficiency,
+                and regional climate. Where and how a model is trained can significantly affect its footprint.
+            </li>
+            <li>
+                <span class="key">Accountability and reporting:</span>
+                True sustainability requires visibility: energy use, emissions data, and standardized
+                efficiency benchmarks. Some companies disclose these numbers; others disclose nothing,
+                which makes “green AI” claims hard to evaluate.
+            </li>
         </ul>
         <p>
-            At the same time, very large, general-purpose models can still
-            require huge training runs and constant serving infrastructure.
-            Later revisions of this guide will use specific Zotero sources to
-            compare “smaller, task-specific” models with “bigger, general”
-            ones in terms of both usefulness and sustainability.
+            Green AI proposes a balance: design models that solve tasks effectively while minimizing
+            resource use. But large general-purpose models still require enormous training runs and
+            energy-intensive deployment. Smaller, task-specific models can often achieve similar results
+            at a fraction of the environmental cost, especially when they are designed to do one thing
+            well instead of everything at once.
+        </p>
+        <p>
+            At the same time, AI is not doomed to be purely wasteful or “corporate slop.” Used with
+            different priorities, it can support sustainability itself: optimizing energy grids, helping
+            model climate scenarios, improving public transit schedules, or giving people clearer feedback
+            on the impact of their choices. The problem is less the idea of AI and more the incentives
+            that drive how it is built and deployed. Right now, many large systems are shaped by ad
+            revenue and engagement metrics rather than long-term public benefit. A more sustainable
+            approach would prioritize transparent, smaller-scale tools built for social and environmental
+            goals first, and profit second.
         </p>
     </section>
 
@@ -574,27 +673,40 @@
             <span class="badge">Beyond individual choices</span>
         </h2>
         <p>
-            It is easy to focus only on individual actions—lowering
-            resolutions, buying efficient devices, or unplugging hardware.
-            Those choices matter, but they are layered on top of policies and
-            infrastructures that ordinary users don’t directly control.
+            Individual choices matter, adjusting streaming resolution, repairing devices, using
+            efficient hardware, but meaningful sustainability depends on <strong>policy and
+            infrastructure</strong>.
         </p>
         <p>
-            Policy and governance shape:
+            Policy influences:
         </p>
         <ul class="tension-list">
-            <li><span class="key">Device lifetimes:</span> whether hardware is repairable
-                and how quickly it is pushed out of support.</li>
-            <li><span class="key">Reporting rules:</span> what companies have to disclose
-                about data centre emissions, water use, and supply chains.</li>
-            <li><span class="key">Public infrastructure:</span> investment in efficient
-                grids, cooling, and network backbones.</li>
+            <li>
+                <span class="key">Device lifetimes:</span>
+                Right-to-repair laws, software support policies, and availability of replacement parts
+                determine whether a device lasts 3 years or 10.
+            </li>
+            <li>
+                <span class="key">Environmental reporting:</span>
+                Governments can require companies to disclose data center emissions, water use,
+                and supply chain impacts instead of keeping them opaque.
+            </li>
+            <li>
+                <span class="key">Infrastructure investment:</span>
+                Public resources shape grid efficiency, cooling innovation, and network resilience,
+                especially as climate change stresses existing systems.
+            </li>
+            <li>
+                <span class="key">Standards and regulation:</span>
+                Policies can require lifecycle analysis, sustainable procurement, repairability standards,
+                and carbon reporting so that “green” claims are backed by evidence.
+            </li>
         </ul>
         <p>
-            Future updates to this guide will connect specific policies and
-            regulatory frameworks from my Zotero readings to the technical
-            issues discussed in earlier sections, reinforcing that sustainable
-            technology is always a shared responsibility.
+            Sustainable technology is not just a matter of better consumer choices; it is a structural
+            issue. When policy supports repair, transparency, and long-lived infrastructure, individual
+            choices add up more effectively. Without that support, people are pushed into short device
+            lifespans, opaque platforms, and systems that externalize their environmental costs.
         </p>
     </section>
 
@@ -604,37 +716,75 @@
             Read next: starting points from my Zotero library
             <span class="badge">Further reading</span>
         </h2>
+
+        <p>
+            These sources shaped the writing of this guide and offer concrete data and case studies
+            behind the concepts discussed above:
+        </p>
+
         <div class="read-grid">
-            <article class="resource-card">
-                <div class="resource-tag">Streaming</div>
-                <h3>Carbon impact of video streaming (Carbon Trust)</h3>
-                <p>
-                    A breakdown of how streaming’s footprint is split across data
-                    centres, networks, and end-user devices, and what levers exist
-                    at each stage.
-                </p>
-            </article>
 
-            <article class="resource-card">
-                <div class="resource-tag">AI & energy</div>
-                <h3>AI’s Energy Demand (Penn State IEE)</h3>
-                <p>
-                    An accessible overview of why modern AI can be energy-intensive,
-                    along with proposed strategies for making models and data centres
-                    more efficient.
-                </p>
-            </article>
+            <!-- Carbon Trust -->
+            <a class="resource-link"
+               href="https://www.carbontrust.com/resources/carbon-impact-of-video-streaming"
+               target="_blank" rel="noopener">
+                <article class="resource-card">
+                    <div class="resource-tag">Streaming</div>
+                    <h3>Carbon Trust — Carbon Impact of Video Streaming</h3>
+                    <p>
+                        A foundational look into streaming’s environmental footprint across data
+                        centers, networks, and devices. Breaks down where energy use actually
+                        occurs in the video delivery chain.
+                    </p>
+                </article>
+            </a>
 
-            <article class="resource-card">
-                <div class="resource-tag">Digital use</div>
-                <h3>Environmental sustainability of digital content consumption</h3>
-                <p>
-                    Examines how everyday media habits interact with the physical
-                    infrastructures that support streaming and cloud services.
-                </p>
-            </article>
+            <!-- Penn State IEE -->
+            <a class="resource-link"
+               href="https://iee.psu.edu/news/ai%E2%80%99s-growing-energy-problem"
+               target="_blank" rel="noopener">
+                <article class="resource-card">
+                    <div class="resource-tag">AI & Energy</div>
+                    <h3>Penn State IEE — AI’s Energy Demand</h3>
+                    <p>
+                        An accessible explanation of why modern AI systems can be energy-intensive,
+                        focusing on training, deployment, and opportunities for efficiency gains.
+                    </p>
+                </article>
+            </a>
+
+            <!-- Istrate Paper -->
+            <a class="resource-link"
+               href="https://www.sciencedirect.com/science/article/pii/S2214629620303646"
+               target="_blank" rel="noopener">
+                <article class="resource-card">
+                    <div class="resource-tag">Digital Use</div>
+                    <h3>Istrate — Environmental Sustainability of Digital Content Consumption</h3>
+                    <p>
+                        A research-backed analysis connecting everyday media habits to the physical
+                        infrastructures behind streaming, cloud platforms, and content delivery networks.
+                    </p>
+                </article>
+            </a>
+
         </div>
     </section>
+
+    <!-- BACK TO INDEX SECTION -->
+    <section id="back-home" class="card">
+        <h2>
+            Done reading? Head back to the main page
+        </h2>
+        <p>
+            This guide is part of a sustainable technology project. If you’d like to
+            return to the landing page, use the link below.
+        </p>
+        <a class="back-home-link" href="index.html">
+            <span class="icon">←</span>
+            <span>Back to guide home</span>
+        </a>
+    </section>
+
 
 </main>
 
@@ -642,13 +792,15 @@
 
 <footer class="site-footer">
     <div class="wrapper">
-        <p>&copy; 2025 Gabriella Vozar</p>
+        <p>&copy; Created by Gabriella Vozar | Penn State Behrend DIGIT | © 2025</p>
     </div>
 </footer>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const navButtons = document.querySelectorAll(".nav-button");
+        const backToTop = document.getElementById("backToTop");
+
         const sections = [
             "intro",
             "why-sustainable-tech",
@@ -657,9 +809,8 @@
             "policy",
             "read-next"
         ].map(id => document.getElementById(id));
-        const backToTop = document.getElementById("backToTop");
 
-        // Nav click → smooth scroll
+        // Smooth scroll
         navButtons.forEach(btn => {
             btn.addEventListener("click", () => {
                 const id = btn.dataset.section;
@@ -670,7 +821,7 @@
             });
         });
 
-        // Scroll
+        // Scrollspy
         const observer = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
@@ -693,7 +844,7 @@
             if (section) observer.observe(section);
         });
 
-        // Back to top button
+        // Back-to-top visibility
         window.addEventListener("scroll", () => {
             backToTop.style.display = window.scrollY > 300 ? "block" : "none";
         });
@@ -703,5 +854,7 @@
         });
     });
 </script>
+
 </body>
 </html>
+
